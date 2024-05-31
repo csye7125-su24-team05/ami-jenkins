@@ -1,0 +1,14 @@
+jenkins:
+  systemMessage: 'Welcome to Jenkins ${USERNAME}!'
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: ${USERNAME}
+          password: ${PASSWORD}
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+unclassified:
+  location:
+    url: 'https://jenkins.jayv.tech/'
