@@ -92,7 +92,7 @@ Environment="JENKINS_HOME=/var/lib/jenkins"
 WorkingDirectory=/var/lib/jenkins
 
 # Location of secrets file
-Environment="SECRETS_FILE=$SECRET_FILE"
+Environment="SECRETS_FILE=$SECRETS_FILE"
 
 # Location of the exploded WAR
 Environment="JENKINS_WEBROOT=%C/jenkins/war"
