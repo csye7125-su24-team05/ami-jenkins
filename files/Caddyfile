@@ -1,3 +1,3 @@
-jenkins.jayv.tech {
+jenkins.nexflare.me {
   reverse_proxy :8080
 }
