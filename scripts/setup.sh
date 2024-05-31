@@ -48,7 +48,7 @@ java -jar /tmp/jenkins-cli.jar -s http://localhost:8080/ -auth admin:$INITIAL_AD
 
 sudo sed -i 's/--environ/--environ CADDY_TLSALPN01_DISABLED=true/g' /usr/lib/systemd/system/caddy.service
 
-SECRET_FILE=/var/lib/jenkins/secrets/secrets.properties 
+SECRETS_FILE=/var/lib/jenkins/secrets/secrets.properties 
 
 sudo tee /usr/lib/systemd/system/jenkins.service > /dev/null <<EOF
 #
@@ -110,7 +110,7 @@ Environment="JENKINS_PORT=8080"
 WantedBy=multi-user.target
 EOF
 
-sudo tee -a $SECRET_FILE > /dev/null <<EOF
+sudo tee -a $SECRETS_FILE > /dev/null <<EOF
 USERNAME=$JENKINS_USERNAME
 PASSWORD=$JENKINS_PASSWORD
 EOF
