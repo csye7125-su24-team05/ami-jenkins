@@ -1,5 +1,5 @@
 jenkins:
-  systemMessage: 'Welcome to Jenkins ${USERNAME}!'
+  systemMessage: "Welcome to Jenkins ${USERNAME}!"
   securityRealm:
     local:
       allowsSignup: false
@@ -9,6 +9,59 @@ jenkins:
   authorizationStrategy:
     loggedInUsersCanDoAnything:
       allowAnonymousRead: false
+
+credentials:
+  system:
+    domainCredentials:
+      - domain:
+          name: "Global credentials"
+          description: "Global credentials"
+        credentials:
+          - usernamePassword:
+              scope: GLOBAL
+              id: "github-credentials"
+              username: ${GITHUB_USERNAME}
+              password: ${GITHUB_ACCESS_TOKEN}
+              description: "GitHub credentials"
+          - usernamePassword:
+              scope: GLOBAL
+              id: "docker-credentials"
+              username: ${DOCKER_USERNAME}
+              password: ${DOCKER_TOKEN}
+              description: "Docker credentials"
+
+jobs:
+  - script: >
+      pipelineJob('docker-build-and-push') {
+        definition {
+            cpsScm {
+                scm {
+                    git {
+                        remote {
+                            url('https://github.com/csye7125-su24-team05/static-site')
+                            credentials('github-credentials')
+                        }
+                        branches('*/main')
+                        extensions {
+                            cleanBeforeCheckout()
+                        }
+                    }
+                }
+                scriptPath('Jenkinsfile') // Path to your Jenkinsfile in the repo
+            }
+        }
+        triggers {
+          githubPush()
+        }
+      }
+
 unclassified:
   location:
-    url: 'https://jenkins.jayv.tech/'
+    url: "https://jenkins.nexflare.me"
+
+  githubpluginconfig:
+    configs:
+      - apiUrl: "https://api.github.com"
+        manageHooks: true
+        credentialsId: "github-credentials"
+        name: "github"

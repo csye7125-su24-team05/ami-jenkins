@@ -3,10 +3,14 @@
 # config jenkins
 sudo mkdir /var/lib/jenkins/init.groovy.d
 sudo cp /tmp/setup.groovy /var/lib/jenkins/init.groovy.d
+sudo cp -r /tmp/pipeline /var/lib/jenkins/init.groovy.d
 sudo chown -R jenkins:jenkins /var/lib/jenkins/init.groovy.d
 sudo cp /tmp/jenkins-config.yaml /var/lib/jenkins/jenkins.yaml
 sudo cat /var/lib/jenkins/jenkins.yaml
 sudo chown jenkins:jenkins /var/lib/jenkins/jenkins.yaml
+
+# sudo mkdir /var/lib/jenkins/pipeline
+# sudo chown -R jenkins:jenkins /var/lib/jenkins/pipeline
 
 # Install Jenkins CLI
 wget http://localhost:8080/jnlpJars/jenkins-cli.jar -P /tmp
@@ -22,10 +26,13 @@ RECOMMENDED_PLUGINS=(
   "cloudbees-folder:latest"
   "configuration-as-code:latest"
   "credentials-binding:latest"
+  "docker-workflow:latest"
   "email-ext:latest"
   "git:latest"
+  "github:latest"
   "github-branch-source:latest"
   "gradle:latest"
+  "job-dsl:latest"
   "ldap:latest"
   "mailer:latest"
   "matrix-auth:latest"
@@ -113,7 +120,13 @@ EOF
 sudo tee -a $SECRETS_FILE > /dev/null <<EOF
 USERNAME=$JENKINS_USERNAME
 PASSWORD=$JENKINS_PASSWORD
+GITHUB_ACCESS_TOKEN=$GITHUB_ACCESS_TOKEN
+GITHUB_USERNAME=$GITHUB_USERNAME
+DOCKER_USERNAME=$DOCKER_USERNAME
+DOCKER_TOKEN=$DOCKER_TOKEN
 EOF
+
+sudo docker buildx create --name container --driver=docker-container
 
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp

@@ -32,4 +32,8 @@ jobs:
         env:
           JENKINS_USERNAME: ${{ secrets.JENKINS_USERNAME }}
           JENKINS_PASSWORD: ${{ secrets.JENKINS_PASSWORD }}
+          GITHUB_ACCESS_TOKEN: ${{ secrets.GIT_ACCESS_TOKEN }}
+          GITHUB_USERNAME: ${{ vars.GIT_USERNAME }}
+          DOCKER_USERNAME: ${{ vars.DOCKER_USERNAME }}
+          DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
         run: packer build jenkins.pkr.hcl
