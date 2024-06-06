@@ -19,8 +19,8 @@ variable "jenkins_password" {
 }
 
 variable "github_username" {
-  type      = string
-  default   = env("GITHUB_USERNAME")
+  type    = string
+  default = env("GITHUB_USERNAME")
 }
 
 variable "github_token" {
@@ -31,8 +31,8 @@ variable "github_token" {
 
 
 variable "docker_username" {
-  type      = string
-  default   = env("DOCKER_USERNAME")
+  type    = string
+  default = env("DOCKER_USERNAME")
 }
 
 
