@@ -1,3 +1,7 @@
+{
+        acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
+}
+
 jenkins.nexflare.me {
-  reverse_proxy :8080
+        reverse_proxy :8080
 }
