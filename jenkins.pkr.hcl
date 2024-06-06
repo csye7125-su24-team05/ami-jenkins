@@ -18,6 +18,30 @@ variable "jenkins_password" {
   sensitive = true
 }
 
+variable "github_username" {
+  type      = string
+  default   = env("GITHUB_USERNAME")
+}
+
+variable "github_token" {
+  type      = string
+  default   = env("GITHUB_ACCESS_TOKEN")
+  sensitive = true
+}
+
+
+variable "docker_username" {
+  type      = string
+  default   = env("DOCKER_USERNAME")
+}
+
+
+variable "docker_token" {
+  type      = string
+  default   = env("DOCKER_TOKEN")
+  sensitive = true
+}
+
 source "amazon-ebs" "ubuntu-jenkins" {
   ami_name        = "jenkins-ami-{{timestamp}}"
   ami_description = "Jenkins AMI with caddy reverse proxy and let's encrypt certificate"
@@ -58,6 +82,10 @@ build {
     environment_vars = [
       "JENKINS_USERNAME=${var.jenkins_username}",
       "JENKINS_PASSWORD=${var.jenkins_password}",
+      "GITHUB_ACCESS_TOKEN=${var.github_token}",
+      "GITHUB_USERNAME=${var.github_username}",
+      "DOCKER_USERNAME=${var.docker_username}",
+      "DOCKER_TOKEN=${var.docker_token}"
     ]
     scripts = ["scripts/install.sh", "scripts/setup.sh", "scripts/cleanup.sh"]
   }

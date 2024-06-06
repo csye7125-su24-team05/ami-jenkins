@@ -126,6 +126,8 @@ DOCKER_USERNAME=$DOCKER_USERNAME
 DOCKER_TOKEN=$DOCKER_TOKEN
 EOF
 
+sudo docker buildx create --name container --driver=docker-container
+
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
 

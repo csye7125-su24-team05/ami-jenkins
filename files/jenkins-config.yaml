@@ -33,66 +33,31 @@ credentials:
 jobs:
   - script: >
       pipelineJob('docker-build-and-push') {
-          definition {
-              cps {
-                  script('''
-                      pipeline {
-                        agent any
-                        environment {
-                            DOCKER_CREDENTIALS_ID = 'docker-credentials'
-                            DOCKER_IMAGE = 'nexflare73/jenkinscheck'
-                            DOCKER_REGISTRY = 'https://registry.hub.docker.com'
-                            BUILD_ID = 'nexflareJay'
-                            DOCKER_USERNAME = 'nexflare73'
+        definition {
+            cpsScm {
+                scm {
+                    git {
+                        remote {
+                            url('https://github.com/csye7125-su24-team05/static-site')
+                            credentials('github-credentials')
                         }
-                        stages {
-                            stage('Checkout') {
-                                steps {
-                                    // Checkout code from the main branch
-                                    git branch: 'main', url: 'https://github.com/csye7125-su24-team05/static-site', credentialsId: 'github-credentials'
-                                }
-                            }
-                            stage('Build Docker Image') {
-                                steps {
-                                    script {
-                                        // Build Docker image
-                                        docker.build("${DOCKER_IMAGE}:${BUILD_ID}")
-                                    }
-                                }
-                            }
-                            stage('Push Docker Image') {
-                                steps {
-                                    script {
-                                        // Login to Docker registry
-                                        // docker.withRegistry(DOCKER_REGISTRY, DOCKER_CREDENTIALS_ID) {
-                                        //     // Push Docker image
-                                        //     docker.image("${DOCKER_IMAGE}:${BUILD_ID}").push()
-                                        // }
-                                        sh 'docker login -u ${DOCKER_USERNAME} -p dckr_pat__wk8-rDDYHoQj919NjUeRIfCi-w'
-                                        docker.image("${DOCKER_IMAGE}:${BUILD_ID}").push()
-                                    }
-                                }
-                            }
-                        }
-                        post {
-                            always {
-                                // Cleanup
-                                cleanWs()
-                            }
+                        branches('*/main')
+                        extensions {
+                            cleanBeforeCheckout()
                         }
                     }
-                  ''')
-                  sandbox(true)
-              }
-          }
-          triggers {
-              githubPush()
-          }
+                }
+                scriptPath('Jenkinsfile') // Path to your Jenkinsfile in the repo
+            }
+        }
+        triggers {
+          githubPush()
+        }
       }
 
 unclassified:
   location:
-    url: "http://143.198.116.18:8080"
+    url: "https://jenkins.nexflare.me"
 
   githubpluginconfig:
     configs:
