@@ -22,10 +22,12 @@ INITIAL_ADMIN_PASSWORD=$(sudo cat /var/lib/jenkins/secrets/initialAdminPassword)
 RECOMMENDED_PLUGINS=(
   "ant:latest"
   "antisamy-markup-formatter:latest"
+  "authorize-project:latest"
   "build-timeout:latest"
   "cloudbees-folder:latest"
   "configuration-as-code:latest"
   "credentials-binding:latest"
+  "conventional-commits:latest"
   "docker-workflow:latest"
   "email-ext:latest"
   "git:latest"
@@ -43,7 +45,6 @@ RECOMMENDED_PLUGINS=(
   "timestamper:latest"
   "workflow-aggregator:latest"
   "ws-cleanup:latest"
-  "authorize-project:latest"
 )
 
 # Loop through the list of plugins and install each one
@@ -125,8 +126,6 @@ GITHUB_USERNAME=$GITHUB_USERNAME
 DOCKER_USERNAME=$DOCKER_USERNAME
 DOCKER_TOKEN=$DOCKER_TOKEN
 EOF
-
-sudo docker buildx create --name container --driver=docker-container
 
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp

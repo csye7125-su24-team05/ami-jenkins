@@ -54,6 +54,27 @@ jobs:
           githubPush()
         }
       }
+  - script: >
+      multibranchPipelineJob('status-check') {
+        branchSources {
+          github {
+            id('static-site-pr-check')
+            repoOwner('csye7125-su24-team05')
+            repository('static-site')
+            buildForkPRHead(true)
+            buildForkPRMerge(false)
+            buildOriginBranchWithPR(false)
+            buildOriginBranch(false)
+            scanCredentialsId('github-credentials')
+            checkoutCredentialsId('github-credentials')
+          }
+        }
+        factory {
+          workflowBranchProjectFactory {
+            scriptPath('Jenkinsfile-pr')
+          }
+        }
+      }
 
 unclassified:
   location:
