@@ -1,0 +1,30 @@
+pipeline {
+  agent {
+    docker {
+      image 'hashicorp/packer:latest'
+      args '--entrypoint=\'\' -u root'
+    }
+  }
+  stages {
+    stage('packer init') {
+      steps {
+        sh 'packer init *.pkr.hcl'
+      }
+    }
+    stage('packer fmt check') {
+      steps {
+        sh 'packer fmt -check *.pkr.hcl'
+      }
+    }
+    stage('packer validate') {
+      steps {
+        sh 'packer validate *.pkr.hcl'
+      }
+    }
+  }
+  post {
+    always {
+      cleanWs()
+    }
+  }
+}

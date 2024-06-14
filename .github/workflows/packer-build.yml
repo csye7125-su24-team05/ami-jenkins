@@ -36,4 +36,8 @@ jobs:
           GITHUB_USERNAME: ${{ vars.GIT_USERNAME }}
           DOCKER_USERNAME: ${{ vars.DOCKER_USERNAME }}
           DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
+          GH_APP_ID: ${{ secrets.GH_APP_ID }}
+          GH_APP_PRIVATE_KEY: ${{ secrets.GH_APP_PRIVATE_KEY }}
+          TLD: ${{ vars.TLD }}
+          LETs_ENCRYPT_URL: ${{ vars.LETs_ENCRYPT_URL }}
         run: packer build jenkins.pkr.hcl
