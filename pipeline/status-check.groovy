@@ -35,6 +35,20 @@ def repos = [
     credentialsId: 'github-jenkins-app',
   ],
   [
+    name: 'webapp-cve-processor',
+    owner: 'csye7125-su24-team05',
+    url: 'https://github.com/csye7125-su24-team05/webapp-cve-processor.git',
+    scriptPath: ['docker-validate'],
+    credentialsId: 'github-jenkins-app',
+  ],
+  [
+    name: 'webapp-migration',
+    owner: 'csye7125-su24-team05',
+    url: 'https://github.com/csye7125-su24-team05/webapp-migration.git',
+    scriptPath: ['docker-validate'],
+    credentialsId: 'github-jenkins-app',
+  ],
+  [
     name: 'csye7125-test-repo',
     owner: 'csye7125-su24-team05',
     url: 'https://github.com/csye7125-su24-team05/csye7125-test-repo.git',
