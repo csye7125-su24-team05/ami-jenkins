@@ -1,4 +1,4 @@
-sudo npm install -g semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/changelog @semantic-release/github @semantic-release/git @commitlint/config-conventional @commitlint/cli
+sudo npm install -g semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/changelog @semantic-release/github @semantic-release/git @commitlint/config-conventional @commitlint/cli @semantic-release/exec
 
 sudo mkdir -p /etc/jenkins
 sudo tee -a /etc/jenkins/commitlint.config.js > /dev/null <<EOF

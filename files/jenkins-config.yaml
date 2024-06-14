@@ -49,7 +49,7 @@ jobs:
 
 unclassified:
   location:
-    url: 'http://jenkins.nexflare.me'
+    url: 'https://jenkins.nexflare.me'
 
   githubpluginconfig:
     configs:
@@ -57,4 +57,3 @@ unclassified:
         manageHooks: true
         credentialsId: 'github-credentials'
         name: 'github'
-
