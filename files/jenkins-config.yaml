@@ -1,5 +1,8 @@
 jenkins:
-  systemMessage: "Welcome to Jenkins ${USERNAME}!"
+  systemMessage: |
+    Welcome to Jenkins!
+    This is the Jenkins instance for CSYE 7125 course project.
+  numExecutors: 4
   securityRealm:
     local:
       allowsSignup: false
@@ -14,75 +17,43 @@ credentials:
   system:
     domainCredentials:
       - domain:
-          name: "Global credentials"
-          description: "Global credentials"
+          name: 'Global credentials'
+          description: 'Global credentials'
         credentials:
           - usernamePassword:
               scope: GLOBAL
-              id: "github-credentials"
+              id: 'github-credentials'
               username: ${GITHUB_USERNAME}
               password: ${GITHUB_ACCESS_TOKEN}
-              description: "GitHub credentials"
+              description: 'GitHub credentials'
           - usernamePassword:
               scope: GLOBAL
-              id: "docker-credentials"
+              id: 'docker-credentials'
               username: ${DOCKER_USERNAME}
               password: ${DOCKER_TOKEN}
-              description: "Docker credentials"
+              description: 'Docker credentials'
+          - gitHubApp:
+              scope: GLOBAL
+              appID: ${GH_APP_ID}
+              id: 'github-jenkins-app'
+              description: 'GitHub status check Jenkins App'
+              owner: 'csye7125-su24-team05'
+              privateKey: ${decodeBase64:${GH_APP_PRIVATE_KEY}}
 
 jobs:
-  - script: >
-      pipelineJob('docker-build-and-push') {
-        definition {
-            cpsScm {
-                scm {
-                    git {
-                        remote {
-                            url('https://github.com/csye7125-su24-team05/static-site')
-                            credentials('github-credentials')
-                        }
-                        branches('*/main')
-                        extensions {
-                            cleanBeforeCheckout()
-                        }
-                    }
-                }
-                scriptPath('Jenkinsfile') // Path to your Jenkinsfile in the repo
-            }
-        }
-        triggers {
-          githubPush()
-        }
-      }
-  - script: >
-      multibranchPipelineJob('status-check') {
-        branchSources {
-          github {
-            id('static-site-pr-check')
-            repoOwner('csye7125-su24-team05')
-            repository('static-site')
-            buildForkPRHead(true)
-            buildForkPRMerge(false)
-            buildOriginBranchWithPR(false)
-            buildOriginBranch(false)
-            scanCredentialsId('github-credentials')
-            checkoutCredentialsId('github-credentials')
-          }
-        }
-        factory {
-          workflowBranchProjectFactory {
-            scriptPath('Jenkinsfile-pr')
-          }
-        }
-      }
+  - file: /var/lib/jenkins/pipeline/org/folder.groovy
+  - file: /var/lib/jenkins/pipeline/org/release.groovy
+  - file: /var/lib/jenkins/pipeline/status-check.groovy
+  - file: /var/lib/jenkins/pipeline/build-pipeline.groovy
+  - file: /var/lib/jenkins/pipeline/org/commit-check.groovy
 
 unclassified:
   location:
-    url: "https://jenkins.nexflare.me"
+    url: 'https://jenkins.nexflare.me'
 
   githubpluginconfig:
     configs:
-      - apiUrl: "https://api.github.com"
+      - apiUrl: 'https://api.github.com'
         manageHooks: true
-        credentialsId: "github-credentials"
-        name: "github"
+        credentialsId: 'github-credentials'
+        name: 'github'

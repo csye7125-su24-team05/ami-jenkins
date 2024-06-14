@@ -15,9 +15,12 @@ jobs:
 
       - name: Setup Packer
         uses: hashicorp/setup-packer@main
-      
+
       - name: packer init
         run: packer init jenkins.pkr.hcl
-      
+
       - name: Validate Packer template
         run: packer fmt -check jenkins.pkr.hcl
+
+      - name: packer validate
+        run: packer validate jenkins.pkr.hcl
