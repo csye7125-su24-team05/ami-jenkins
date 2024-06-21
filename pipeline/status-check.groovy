@@ -54,6 +54,13 @@ def repos = [
     url: 'https://github.com/csye7125-su24-team05/csye7125-test-repo.git',
     scriptPath: ['test-validate'],
     credentialsId: 'github-jenkins-app',
+  ],
+  [
+    name: 'infra-aws',
+    owner: 'csye7125-su24-team05',
+    url: 'https://github.com/csye7125-su24-team05/infra-aws.git',
+    scriptPath: ['terraform-validate'],
+    credentialsId: 'github-jenkins-app',
   ]
 ]
 

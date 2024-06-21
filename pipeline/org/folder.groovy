@@ -6,7 +6,8 @@ def repos = [
     "webapp-migration",
     "webapp-cve-processor",
     "helm-webapp-cve-processor",
-    "csye7125-test-repo"
+    "csye7125-test-repo",
+    "infra-aws"
 ]
 
 repos.each { name ->
