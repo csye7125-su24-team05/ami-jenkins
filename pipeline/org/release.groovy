@@ -23,6 +23,16 @@ def repos = [
     name: 'csye7125-test-repo',
     url: 'https://github.com/csye7125-su24-team05/csye7125-test-repo.git',
     credentialsId: 'github-jenkins-app',
+  ],
+  [
+    name: 'webapp-cve-consumer',
+    url: 'https://github.com/csye7125-su24-team05/webapp-cve-consumer.git',
+    credentialsId: 'github-jenkins-app',
+  ],
+  [
+    name: 'helm-webapp-cve-consumer',
+    url: 'https://github.com/csye7125-su24-team05/helm-webapp-cve-consumer.git',
+    credentialsId: 'github-jenkins-app',
   ]
 ]
 
