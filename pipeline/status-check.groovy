@@ -61,6 +61,20 @@ def repos = [
     url: 'https://github.com/csye7125-su24-team05/infra-aws.git',
     scriptPath: ['terraform-validate'],
     credentialsId: 'github-jenkins-app',
+  ],
+  [
+    name: 'webapp-cve-consumer',
+    owner: 'csye7125-su24-team05',
+    url: 'https://github.com:csye7125-su24-team05/webapp-cve-consumer.git',
+    scriptPath: ['docker-validate'],
+    credentialsId: 'github-jenkins-app',
+  ],
+  [
+    name: 'helm-webapp-cve-consumer',
+    owner: 'csye7125-su24-team05',
+    url: 'https://github.com/csye7125-su24-team05/helm-webapp-cve-consumer.git',
+    scriptPath: ['helm-validate'],
+    credentialsId: 'github-jenkins-app',
   ]
 ]
 

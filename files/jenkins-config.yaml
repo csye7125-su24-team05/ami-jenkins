@@ -44,7 +44,6 @@ jobs:
   - file: /var/lib/jenkins/pipeline/org/folder.groovy
   - file: /var/lib/jenkins/pipeline/org/release.groovy
   - file: /var/lib/jenkins/pipeline/status-check.groovy
-  - file: /var/lib/jenkins/pipeline/build-pipeline.groovy
   - file: /var/lib/jenkins/pipeline/org/commit-check.groovy
 
 unclassified:
