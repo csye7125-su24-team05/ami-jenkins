@@ -33,6 +33,16 @@ def repos = [
     name: 'helm-webapp-cve-consumer',
     url: 'https://github.com/csye7125-su24-team05/helm-webapp-cve-consumer.git',
     credentialsId: 'github-jenkins-app',
+  ],
+  [
+    name: 'helm-eks-autoscaler',
+    url: 'https://github.com/csye7125-su24-team05/helm-eks-autoscaler.git',
+    credentialsId: 'github-jenkins-app',
+  ],
+  [
+    name: 'docker-sync',
+    url: 'https://github.com/csye7125-su24-team05/docker-sync.git',
+    credentialsId: 'github-jenkins-app',
   ]
 ]
 

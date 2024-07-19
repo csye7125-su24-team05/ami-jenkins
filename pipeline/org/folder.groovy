@@ -9,7 +9,9 @@ def repos = [
     "csye7125-test-repo",
     "infra-aws",
     "webapp-cve-consumer",
-    "helm-webapp-cve-consumer"
+    "helm-webapp-cve-consumer",
+    "helm-eks-autoscaler",
+    "docker-sync"
 ]
 
 repos.each { name ->
