@@ -11,7 +11,6 @@ def repos = [
     "webapp-cve-consumer",
     "helm-webapp-cve-consumer",
     "helm-eks-autoscaler",
-    "docker-sync"
 ]
 
 repos.each { name ->

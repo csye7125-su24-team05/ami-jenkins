@@ -80,16 +80,9 @@ def repos = [
     name: 'helm-eks-autoscaler',
     owner: 'csye7125-su24-team05',
     url: 'https://github.com/csye7125-su24-team05/helm-eks-autoscaler.git',
-    scriptPath: ['helm-validate'],
+    scriptPath: ['helm-validate', 'docker-validate'],
     credentialsId: 'github-jenkins-app',
   ],
-  [
-    name: 'docker-sync',
-    owner: 'csye7125-su24-team05',
-    url: 'https://github.com/csye7125-su24-team05/docker-sync.git',
-    scriptPath: ['docker-validate'],
-    credentialsId: 'github-jenkins-app',
-  ]
 ]
 
 repos.each { repo ->
