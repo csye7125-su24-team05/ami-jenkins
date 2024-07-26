@@ -83,6 +83,20 @@ def repos = [
     scriptPath: ['helm-validate', 'docker-validate'],
     credentialsId: 'github-jenkins-app',
   ],
+  [
+    name: 'cve-operator',
+    owner: 'csye7125-su24-team05',
+    url: 'https://github.com/csye7125-su24-team05/cve-operator.git',
+    scriptPath: ['docker-validate'],
+    credentialsId: 'github-jenkins-app',
+  ],
+  [
+    name: 'helm-cve-operator',
+    owner: 'csye7125-su24-team05',
+    url: 'https://github.com/csye7125-su24-team05/helm-cve-operator.git',
+    scriptPath: ['helm-validate'],
+    credentialsId: 'github-jenkins-app',
+  ]
 ]
 
 repos.each { repo ->

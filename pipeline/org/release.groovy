@@ -47,6 +47,18 @@ def repos = [
     scriptPath: ['release', 'docker-release'],
     credentialsId: 'github-jenkins-app',
   ],
+  [
+    name: 'cve-operator',
+    url: 'https://github.com/csye7125-su24-team05/cve-operator.git',
+    scriptPath: ['docker-release'],
+    credentialsId: 'github-jenkins-app',
+  ],
+  [
+    name: 'helm-cve-operator',
+    url: 'https://github.com/csye7125-su24-team05/helm-cve-operator.git',
+    scriptPath: ['helm-release'],
+    credentialsId: 'github-jenkins-app',
+  ]
 ]
 
 repos.each { repo ->
