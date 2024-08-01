@@ -58,6 +58,18 @@ def repos = [
     url: 'https://github.com/csye7125-su24-team05/helm-cve-operator.git',
     scriptPath: ['helm-release'],
     credentialsId: 'github-jenkins-app',
+  ],
+  [
+    name: 'kube-prometheus-stack',
+    url: 'https://github.com/csye7125-su24-team05/kube-prometheus-stack.git',
+    scriptPath: ['helm-release'],
+    credentialsId: 'github-jenkins-app',
+  ],
+  [
+    name: 'helm-cloudwatch',
+    url: 'https://github.com/csye7125-su24-team05/helm-cloudwatch.git',
+    scriptPath: ['helm-release'],
+    credentialsId: 'github-jenkins-app',
   ]
 ]
 

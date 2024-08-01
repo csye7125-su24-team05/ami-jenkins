@@ -96,6 +96,20 @@ def repos = [
     url: 'https://github.com/csye7125-su24-team05/helm-cve-operator.git',
     scriptPath: ['helm-validate'],
     credentialsId: 'github-jenkins-app',
+  ],
+  [
+    name: 'kube-prometheus-stack',
+    owner: 'csye7125-su24-team05',
+    url: 'https://github.com/csye7125-su24-team05/kube-prometheus-stack.git',
+    scriptPath: ['helm-validate'],
+    credentialsId: 'github-jenkins-app',
+  ],
+  [
+    name: 'helm-cloudwatch',
+    owner: 'csye7125-su24-team05',
+    url: 'https://github.com/csye7125-su24-team05/helm-cloudwatch.git',
+    scriptPath: ['helm-validate'],
+    credentialsId: 'github-jenkins-app',
   ]
 ]
 

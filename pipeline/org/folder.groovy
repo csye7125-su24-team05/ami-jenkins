@@ -13,6 +13,8 @@ def repos = [
     "helm-eks-autoscaler",
     "cve-operator",
     "helm-cve-operator",
+    "helm-cloudwatch",
+    "kube-prometheus-stack"
 ]
 
 repos.each { name ->
