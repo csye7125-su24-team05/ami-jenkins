@@ -110,7 +110,15 @@ def repos = [
     url: 'https://github.com/csye7125-su24-team05/helm-cloudwatch.git',
     scriptPath: ['helm-validate'],
     credentialsId: 'github-jenkins-app',
+  ],
+  [
+    name: 'infra-aws',
+    owner: 'csye7125-su24-team05',
+    url: 'https://github.com/csye7125-su24-team05/infra-aws.git',
+    scriptPath: ['docker-validate'],
+    credentialsId: 'github-jenkins-app',
   ]
+  
 ]
 
 repos.each { repo ->

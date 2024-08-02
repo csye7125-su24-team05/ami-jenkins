@@ -70,6 +70,12 @@ def repos = [
     url: 'https://github.com/csye7125-su24-team05/helm-cloudwatch.git',
     scriptPath: ['helm-release'],
     credentialsId: 'github-jenkins-app',
+  ],
+  [
+    name: 'infra-aws',
+    url: 'https://github.com/csye7125-su24-team05/infra-aws.git',
+    scriptPath: ['docker-release'],
+    credentialsId: 'github-jenkins-app',
   ]
 ]
 
