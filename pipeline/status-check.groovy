@@ -117,7 +117,14 @@ def repos = [
     url: 'https://github.com/csye7125-su24-team05/infra-aws.git',
     scriptPath: ['docker-validate'],
     credentialsId: 'github-jenkins-app',
-  ]
+  ],
+  [
+    name: 'helm-cve-certificate',
+    owner: 'csye7125-su24-team05',
+    url: 'https://github.com/csye7125-su24-team05/helm-cve-certificate.git',
+    scriptPath: ['helm-validate'],
+    credentialsId: 'github-jenkins-app',
+  ],
   
 ]
 
