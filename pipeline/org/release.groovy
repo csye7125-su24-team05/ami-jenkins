@@ -83,6 +83,18 @@ def repos = [
     scriptPath: ['helm-release'],
     credentialsId: 'github-jenkins-app',
   ],
+   [
+    name: 'helm-ollama',
+    url: 'https://github.com/csye7125-su24-team05/helm-ollama.git',
+    scriptPath: ['helm-release'],
+    credentialsId: 'github-jenkins-app',
+  ],
+   [
+    name: 'chat-with-cve',
+    url: 'https://github.com/csye7125-su24-team05/chat-with-cve.git',
+    scriptPath: ['docker-release'],
+    credentialsId: 'github-jenkins-app',
+  ],
 ]
 
 repos.each { repo ->

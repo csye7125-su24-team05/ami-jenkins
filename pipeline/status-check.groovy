@@ -125,6 +125,20 @@ def repos = [
     scriptPath: ['helm-validate'],
     credentialsId: 'github-jenkins-app',
   ],
+  [
+    name: 'helm-ollama',
+    owner: 'csye7125-su24-team05',
+    url: 'https://github.com/csye7125-su24-team05/helm-ollama.git',
+    scriptPath: ['helm-validate'],
+    credentialsId: 'github-jenkins-app',
+  ],
+  [
+    name: 'chat-with-cve',
+    owner: 'csye7125-su24-team05',
+    url: 'https://github.com/csye7125-su24-team05/chat-with-cve.git',
+    scriptPath: ['docker-validate'],
+    credentialsId: 'github-jenkins-app',
+  ],
   
 ]
 
