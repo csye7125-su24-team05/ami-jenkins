@@ -15,7 +15,9 @@ def repos = [
     "helm-cve-operator",
     "helm-cloudwatch",
     "kube-prometheus-stack",
-    "helm-cve-certificate"
+    "helm-cve-certificate",
+    "helm-ollama",
+    "chat-with-cve"
 ]
 
 repos.each { name ->
